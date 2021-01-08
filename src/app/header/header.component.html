@@ -1,0 +1,69 @@
+<mat-toolbar color="primary" class="fixed-header">
+  <div class="example-sidenav-content">
+    <mat-icon (click)="drawer.toggle()">more_vert</mat-icon>
+  </div>
+  <p>Application de test</p>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="right">
+    <div>
+      <button
+        mat-raised-button
+        routerLink="/"
+        routerLinkActive="active"
+        (click)="drawer.toggle()"
+      >
+        home</button
+      ><br />
+    </div>
+    <div *ngIf="isAuth">
+      <button
+        mat-raised-button
+        routerLink="/map"
+        routerLinkActive="active"
+        (click)="drawer.toggle()"
+      >
+        map</button
+      ><br />
+    </div>
+    <div *ngIf="isAuth">
+      <button
+        mat-raised-button
+        routerLink="/chat"
+        routerLinkActive="active"
+        (click)="drawer.toggle()"
+      >
+        chat</button
+      ><br />
+    </div>
+    <div *ngIf="!isAuth">
+      <button
+        mat-raised-button
+        routerLink="/signin"
+        routerLinkActive="active"
+        (click)="drawer.toggle()"
+      >
+        Se connecter</button
+      ><br />
+    </div>
+    <div *ngIf="!isAuth">
+      <button
+        mat-raised-button
+        routerLink="/signup"
+        routerLinkActive="active"
+        (click)="drawer.toggle()"
+      >
+        S'inscrire</button
+      ><br />
+    </div>
+    <div *ngIf="isAuth">
+      <button mat-raised-button (click)="drawer.toggle(); signOut()">
+        Se déconnecter</button
+      ><br />
+    </div>
+    <div></div>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>

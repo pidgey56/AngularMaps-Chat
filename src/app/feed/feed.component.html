@@ -1,0 +1,14 @@
+<div class="boxMessage" *ngFor="let message of currentChat.messages">
+  <div *ngIf="message.emmeteurUid != 'none'">
+    <div class="emmeuteur" *ngIf="message.emmeteurUid == currentUser.uid">
+      <p class="message">{{ message.message }}</p>
+      <p class="messageTimestamp">
+        {{ message.timestamp | date: "medium" }}
+      </p>
+    </div>
+    <div class="other" *ngIf="message.emmeteurUid != currentUser.uid">
+      <p class="message">{{ message.message }}</p>
+      <p class="messageTimestamp">{{ message.timestamp | date: "medium" }}</p>
+    </div>
+  </div>
+</div>

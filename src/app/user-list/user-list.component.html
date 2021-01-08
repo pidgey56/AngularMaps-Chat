@@ -1,0 +1,5 @@
+<div *ngFor="let user of users" (click)="talkto(user.uid)">
+  <div *ngIf="user.uid != currentUser.uid">
+    <p>{{ user.username }}</p>
+  </div>
+</div>

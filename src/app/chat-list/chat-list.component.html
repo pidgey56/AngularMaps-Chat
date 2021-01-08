@@ -1,0 +1,14 @@
+<div *ngFor="let conversation of conversations">
+  <div *ngIf="conversation.keyConversation != 'self'">
+    <div>
+      <div *ngIf="flag">
+        <button
+          mat-raised-button
+          (click)="sendKeyToParent(conversation.keyConversation)"
+        >
+          {{ conversation.nomDeConversation }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

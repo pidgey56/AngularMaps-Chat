@@ -1,0 +1,26 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="email">Adresse mail</label>
+    <input type="text" class="form-control" formControlName="email" />
+  </div>
+  <div>
+    <label placeholder="au moins 6 characteres" for="password"
+      >Mot de passe</label
+    >
+    <input type="password" class="form-control" formControlName="password" />
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="loginForm.invalid"
+  >
+    Me connecter
+  </button>
+  <button mat-raised-button color="primary" (click)="onReset()">
+    Annnuler
+  </button>
+</form>
+
+<p>{{ errorMessage }}</p>
