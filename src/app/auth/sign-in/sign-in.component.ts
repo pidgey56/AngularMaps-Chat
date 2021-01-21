@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/app/service/authentification.service';
 import { SnackbarService } from 'src/app/service/snackbar.service';
@@ -15,14 +10,13 @@ import { SnackbarService } from 'src/app/service/snackbar.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  submitted: boolean;
-
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthentificationService,
     private snackService: SnackbarService,
     private router: Router
   ) {}
+
   loginForm: FormGroup;
   errorMessage: string;
 
@@ -37,19 +31,17 @@ export class SignInComponent implements OnInit {
     });
   }
   onReset() {
-    this.submitted = false;
     this.loginForm.reset();
   }
 
   onSubmit() {
-    this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
     this.authService
       .signInUser(this.loginForm.value.email, this.loginForm.value.password)
       .then(() => {
-        this.snackService.openSnackBar('Connexion successfull');
+        this.snackService.openSnackBar('Connexion successfull', 5000);
         this.router.navigate(['/']);
       })
       .catch((err) => {

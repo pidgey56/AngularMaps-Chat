@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Conversation } from '../models/conversation.model';
-import { AuthentificationService } from '../service/authentification.service';
-import { DatabaseService } from '../service/database.service';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -16,8 +14,6 @@ export class ChatListComponent implements OnInit {
 
   flag: boolean = true;
   constructor(
-    private db: DatabaseService,
-    private auth: AuthentificationService
   ) {}
 
   ngOnInit(): void {}

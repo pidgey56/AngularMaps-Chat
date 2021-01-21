@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { KeyService } from 'src/app/key.service';
-import { chat } from 'src/app/models/chat.model';
 import { Conversation } from 'src/app/models/conversation.model';
-import { message } from 'src/app/models/message.model';
 import { User } from 'src/app/models/user.model';
 import { AuthentificationService } from 'src/app/service/authentification.service';
 import { DatabaseService } from 'src/app/service/database.service';
@@ -54,7 +51,7 @@ export class SignUpComponent implements OnInit {
       )
       .then(
         () => {
-          this.snackService.openSnackBar('Inscription success');
+          this.snackService.openSnackBar('Inscription success',5);
           let newConversation: Conversation = {
             uidParticipants: [this.authService.currentUser().uid],
             keyConversation: this.keyService.generateKey('self'),
@@ -71,7 +68,7 @@ export class SignUpComponent implements OnInit {
         },
         (error) => {
           this.errorMessage = error;
-          this.snackService.openSnackBar(this.errorMessage);
+          this.snackService.openSnackBar(this.errorMessage,5);
         }
       );
   }

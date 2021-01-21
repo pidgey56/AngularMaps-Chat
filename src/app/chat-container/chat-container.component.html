@@ -3,12 +3,14 @@
   [conversations]="conversations"
   (keyToEmit)="getConversationKey($event)"
 ></app-chat-list>
-<app-feed
-  *ngIf="currentConversation != null"
-  [currentUser]="currentUser"
-  [currentConversation]="currentConversation"
-  [currentChat]="currentChat"
-></app-feed>
+<div #scroller>
+  <app-feed
+    *ngIf="currentConversation != null"
+    [currentUser]="currentUser"
+    [currentConversation]="currentConversation"
+    [currentChat]="currentChat"
+  ></app-feed>
+</div>
 <app-chat
   *ngIf="currentConversation != null"
   [currentUser]="currentUser"

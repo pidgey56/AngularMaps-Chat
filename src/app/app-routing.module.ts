@@ -5,15 +5,19 @@ import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { NewChatComponent } from './new-chat/new-chat.component';
+import { LoggedGuard } from './guards/logged.guard';
+import { UnloggedGuard } from './guards/unlogged.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'map', component: MapComponent },
-  { path: 'chat', component: ChatContainerComponent },
-  { path: 'signin', component: SignInComponent },
-  { path: 'signup', component: SignUpComponent },
-  { path: 'newChat', component: NewChatComponent },
+  { path: 'map', component: MapComponent, canActivate: [LoggedGuard] },
+  {
+    path: 'chat',
+    component: ChatContainerComponent,
+    canActivate: [LoggedGuard],
+  },
+  { path: 'signin', component: SignInComponent, canActivate: [UnloggedGuard] },
+  { path: 'signup', component: SignUpComponent, canActivate: [UnloggedGuard] },
 ];
 
 @NgModule({

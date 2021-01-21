@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../service/database.service';
+import { DatabaseService } from "../service/database.service"
 import * as fb from 'firebase';
 import { User } from '../models/user.model';
 import { Conversation } from '../models/conversation.model';
-import { KeyService } from '../key.service';
+import { KeyService } from "../key.service";
 import { Input } from '@angular/core';
 import { chat } from '../models/chat.model';
 @Component({

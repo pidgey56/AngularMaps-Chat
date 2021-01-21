@@ -1,8 +1,19 @@
-<br />
-<input
-  class="chatInput"
-  [(ngModel)]="message"
-  (keydown)="handleSubmit($event)"
-/>
+<div class="chat">
+  <!--<input
+    id="input"
+    class="chatInput"
+    [(ngModel)]="message"
+    (keydown)="handleSubmit($event)"
+  />-->
+  <textarea
+    id="input"
+    class="chatInput"
+    [(ngModel)]="message"
+    (keydown)="handleSubmit($event)"
+    (keydown)="autogrow(44)"
+  ></textarea>
 
-<button mat-raised-button color="primary" (click)="send()">Send</button>
+  <button mat-raised-button color="primary" (click)="send()" class="sendButton">
+    Send
+  </button>
+</div>

@@ -15,7 +15,6 @@ import { ChatComponent } from './chat/chat.component';
 import { FeedComponent } from './feed/feed.component';
 import { ChatContainerComponent } from './chat-container/chat-container.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { SignOutComponent } from './auth/sign-out/sign-out.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -26,7 +25,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { UserListComponent } from './user-list/user-list.component';
-import { NewChatComponent } from './new-chat/new-chat.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
 
 @NgModule({
@@ -39,10 +37,8 @@ import { ChatListComponent } from './chat-list/chat-list.component';
     FeedComponent,
     ChatContainerComponent,
     SignInComponent,
-    SignOutComponent,
     SignUpComponent,
     UserListComponent,
-    NewChatComponent,
     ChatListComponent,
   ],
   imports: [

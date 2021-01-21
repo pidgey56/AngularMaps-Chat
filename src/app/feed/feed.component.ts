@@ -14,8 +14,17 @@ export class FeedComponent implements OnInit {
   @Input() currentChat: chat;
 
   ngOnInit(): void {
-    
+    this.sleep(1000).then(() => {
+      console.log('feed component initialized');
+
+    });
   }
 
+
+  sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+
+  
 
 }

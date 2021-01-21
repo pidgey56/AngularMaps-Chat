@@ -1,23 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewChecked,
+} from '@angular/core';
 import { Conversation } from '../models/conversation.model';
 import { User } from '../models/user.model';
 import { AuthentificationService } from '../service/authentification.service';
-import { DatabaseService } from '../service/database.service';
 import * as fb from 'firebase';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat-container',
   templateUrl: './chat-container.component.html',
   styleUrls: ['./chat-container.component.scss'],
 })
-export class ChatContainerComponent implements OnInit {
+export class ChatContainerComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scroller') private feedContainer: ElementRef;
   conversations: Conversation[];
   users: User[];
   currentUser = this.auth.currentUser();
   currentConversation: Conversation;
   receivedKey: string;
   currentChat;
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    this.feedContainer.nativeElement.scrollTop = this.feedContainer.nativeElement.scrollHeight;
+  }
 
   getConversationKey(key: string) {
     for (let conversation of this.conversations) {
@@ -39,11 +52,7 @@ export class ChatContainerComponent implements OnInit {
       });
   }
 
-  constructor(
-    private db: DatabaseService,
-    private auth: AuthentificationService,
-    private router: Router
-  ) {}
+  constructor(private auth: AuthentificationService) {}
 
   ngOnInit(): void {
     this.getUsersList();

@@ -1,0 +1,23 @@
+.chat{
+    position: sticky;
+    margin-top: 1%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+}
+
+.sendButton{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    right: 0;
+}
+
+.chatInput{
+    margin-top: 1%;
+    width: 80%;
+    margin-left: 1%;
+    margin-right : 1%;
+    min-height: 30px;
+    max-height: 300px;
+}

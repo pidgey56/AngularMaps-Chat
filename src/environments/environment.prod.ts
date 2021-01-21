@@ -3,7 +3,7 @@ export const environment = {
   firebase: {
     apiKey: "AIzaSyBs19_JSRAr1-3UTEYOodoTqfx51n0zI0s",
     authDomain: "app-celine-test.firebaseapp.com",
-    databaseURL: "https://app-celine-test-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "https://chatmap-f4cf9-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "app-celine-test",
     storageBucket: "app-celine-test.appspot.com",
     messagingSenderId: "73644820712",

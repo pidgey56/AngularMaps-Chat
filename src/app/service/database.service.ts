@@ -14,18 +14,4 @@ export class DatabaseService {
     firebase.default.database().ref(source).update(data);
   }
 
-  get(source: string) {
-    return new Promise(() => {
-      firebase.default
-        .database()
-        .ref(source)
-        .on('value', (data) => {
-          if (data.val != null) {
-            return data.val();
-          } else {
-            console.log("too bad there's nothing here");
-          }
-        });
-    });
-  }
 }
