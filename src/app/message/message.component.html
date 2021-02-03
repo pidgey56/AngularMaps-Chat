@@ -1,0 +1,10 @@
+    <div class="emmetteur" *ngIf="message.emmeteurUid == currentUser.uid">
+      <p class="message">{{ message.message }}</p>
+      <p class="messageTimestamp">
+        {{ message.timestamp | date: "medium" }}
+      </p>
+    </div>
+    <div class="other" *ngIf="message.emmeteurUid != currentUser.uid">
+      <p class="message">{{ message.message }}</p>
+      <p class="messageTimestamp">{{ message.timestamp | date: "medium" }}</p>
+    </div>

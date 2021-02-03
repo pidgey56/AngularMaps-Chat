@@ -10,28 +10,34 @@ import { DatabaseService } from '../service/database.service';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
-  constructor(private dbService: DatabaseService) {}
+  constructor(private dbService: DatabaseService) { }
 
   message: string;
   @Input() currentUser: User;
   @Input() currentConversation: Conversation;
   @Input() currentChat: chat;
   ngOnInit(): void {
-    
+
   }
 
   autogrow(maxChar: number) {
     let element = document.getElementById('input');
     let lineheight = 20;
-    if(this.message != null){
-      let numberOfLineRequired = Math.floor(this.message.length/maxChar);
-      element.style.height = numberOfLineRequired*lineheight + 'px';
+    if (this.message != null) {
+      let numberOfLineRequired = Math.floor(this.message.length / maxChar);
+      element.style.height = numberOfLineRequired * lineheight + 'px';
     }
   }
 
   send() {
     if (this.message != null) {
       if (this.message.length >= 1) {
+        if(this.currentChat.messages == null){
+          this.currentChat = {
+            keyConv: this.currentChat.keyConv,
+            messages : []
+          }
+        }
         this.currentChat.messages.push({
           message: this.message,
           emmeteurUid: this.currentUser.uid,

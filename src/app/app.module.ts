@@ -26,6 +26,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { UserListComponent } from './user-list/user-list.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
+import { MessageComponent } from './message/message.component';
+import { FindUserComponent } from './find-user/find-user.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProfilPageComponent } from './Profil/profil-page/profil-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { ChatListComponent } from './chat-list/chat-list.component';
     SignUpComponent,
     UserListComponent,
     ChatListComponent,
+    MessageComponent,
+    FindUserComponent,
+    UserProfileComponent,
+    ProfilPageComponent,
   ],
   imports: [
     BrowserModule,

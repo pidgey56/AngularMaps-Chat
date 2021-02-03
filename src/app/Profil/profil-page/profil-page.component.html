@@ -1,0 +1,25 @@
+<div *ngIf="currentUser != null">
+
+  <p>{{ currentUser.username }}</p>
+  <p>{{ currentUser.email }}</p>
+  <img style="max-width: 20%; max-height: 20%;"  src="{{currentUser.profilePicture}}" />
+
+  <div class="form-group">
+    <label for="file">Change Profil Picture</label>
+    <input
+      type="file"
+      id="file"
+      accept="image/*"
+      (change)="handleFileInput($event.target.files)"
+    />
+  </div>
+
+  <button
+    *ngIf="fileToUpload != null"
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+  >
+    Enregistrer
+  </button>
+</div>

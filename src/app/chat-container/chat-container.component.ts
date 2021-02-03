@@ -15,22 +15,13 @@ import * as fb from 'firebase';
   templateUrl: './chat-container.component.html',
   styleUrls: ['./chat-container.component.scss'],
 })
-export class ChatContainerComponent implements OnInit, AfterViewChecked {
-  @ViewChild('scroller') private feedContainer: ElementRef;
+export class ChatContainerComponent implements OnInit {
   conversations: Conversation[];
   users: User[];
   currentUser = this.auth.currentUser();
   currentConversation: Conversation;
   receivedKey: string;
   currentChat;
-
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
-
-  scrollToBottom(): void {
-    this.feedContainer.nativeElement.scrollTop = this.feedContainer.nativeElement.scrollHeight;
-  }
 
   getConversationKey(key: string) {
     for (let conversation of this.conversations) {

@@ -1,26 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { KeyService } from '../key.service';
+import { chat } from '../models/chat.model';
+import { Conversation } from '../models/conversation.model';
+import { User } from '../models/user.model';
 import { DatabaseService } from '../service/database.service';
 import * as fb from 'firebase';
-import { User } from '../models/user.model';
-import { Conversation } from '../models/conversation.model';
-import { KeyService } from '../key.service';
-import { Input } from '@angular/core';
-import { chat } from '../models/chat.model';
-@Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss'],
-})
-export class UserListComponent implements OnInit {
-  constructor(private db: DatabaseService, private keyService: KeyService) {}
 
+@Component({
+  selector: 'app-find-user',
+  templateUrl: './find-user.component.html',
+  styleUrls: ['./find-user.component.scss']
+})
+export class FindUserComponent implements OnInit {
   @Input() users: User[];
   @Input() currentUser;
+  input : string;
+  usersFiltered : User[];
 
-  showCurrentUser() {
-    console.log(this.currentUser);
+  constructor(private db: DatabaseService, private keyService: KeyService) { }
+
+  ngOnInit(): void {
   }
-  ngOnInit(): void {}
+
+  filter(){
+    this.usersFiltered = this.users.filter((user)=>{
+      return user.username == this.input || user.email == this.input;
+    })
+    this.input = '';
+  }
 
   talkto(uid) {
     if (!this.checkExistingConversation(uid)) {
@@ -67,4 +74,11 @@ export class UserListComponent implements OnInit {
     this.db.update('/user/' + fb.default.auth().currentUser.uid, emmeteur);
     this.db.update('/user/' + uid, destinataire);
   }
+
+  handleSubmit(event) {
+    if (event.keyCode === 13) {
+      this.filter();
+    }
+  }
+
 }

@@ -1,0 +1,17 @@
+<input
+id="input"
+class="input"
+[(ngModel)]="input"
+(keydown)="handleSubmit($event)"
+>
+<br>
+
+<button mat-raised-button color="primary" (click)="filter()" class="sendButton">
+Search
+</button>
+
+<div *ngFor="let user of usersFiltered">
+    <div (click)="talkto(user.uid)">
+        <app-user-profile [user]="user" [currentUser]="currentUser"></app-user-profile>
+    </div>
+</div>

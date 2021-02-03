@@ -1,5 +1,7 @@
 {
-  "rulesFile": "database.rules.json",
+  "database": {
+    "rules": "database.rules.json"
+  },
   "hosting": {
     "public": "dist/AppCelineTest",
     "ignore": [
@@ -13,5 +15,8 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }

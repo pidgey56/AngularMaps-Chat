@@ -2,7 +2,7 @@
   <div class="example-sidenav-content">
     <mat-icon (click)="drawer.toggle()">more_vert</mat-icon>
   </div>
-  <p>Application de test</p>
+  <span>ChatMap</span>
 </mat-toolbar>
 
 <mat-drawer-container class="example-container" autosize>
@@ -35,6 +35,16 @@
         (click)="drawer.toggle()"
       >
         chat</button
+      ><br />
+    </div>
+    <div *ngIf="isAuth">
+      <button
+        mat-raised-button
+        routerLink="/profil"
+        routerLinkActive="active"
+        (click)="drawer.toggle()"
+      >
+        Profil</button
       ><br />
     </div>
     <div *ngIf="!isAuth">
